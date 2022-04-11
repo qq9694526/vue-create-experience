@@ -47,13 +47,13 @@ const props = defineProps({
 const emit = defineEmits(["turnOver"]);
 
 let currentTime = ref(props.initialValue);
-let timer = null; // 定时器
+let timer: NodeJS.Timeout | null = null; // 定时器
 
 const start = () => {
-  clearInterval(timer);
+  clearInterval(Number(timer));
   timer = setInterval(() => {
     if (currentTime.value <= 0) {
-      clearInterval(timer);
+      clearInterval(Number(timer));
       emit("turnOver");
       return;
     }
@@ -61,7 +61,7 @@ const start = () => {
   }, 1000);
 };
 const stop = () => {
-  clearInterval(timer);
+  clearInterval(Number(timer));
 };
 const reset = () => {
   stop();
