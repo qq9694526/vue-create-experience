@@ -1,6 +1,6 @@
 <template>
   <div class="c-count-wrap">
-    <svg xmlns="http://www.w3.org/200/svg" height="110" width="110">
+    <svg height="110" width="110">
       <circle
         cx="55"
         cy="55"
@@ -70,7 +70,7 @@ const reset = () => {
 // 环形进度条
 const process = computed(() => {
   const totalTime = props.initialValue;
-  const currentPercent = parseFloat(currentTime.value / totalTime).toFixed(2);
+  const currentPercent = Number((currentTime.value / totalTime).toFixed(2));
   const circleLength = Math.floor(2 * Math.PI * 50);
   return currentPercent * circleLength;
 });
